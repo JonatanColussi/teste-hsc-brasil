@@ -37,6 +37,10 @@ class RecordController {
       const [key] = params;
       const response = await RecordService.get(key);
 
+      if (!response) {
+        return res.send('nil');
+      }
+
       return res.send(response.toString());
     }
 
