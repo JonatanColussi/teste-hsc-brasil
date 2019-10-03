@@ -1,0 +1,32 @@
+{
+  "name": "teste-south-system",
+  "version": "1.0.0",
+  "main": "dist/server.js",
+  "license": "MIT",
+  "scripts": {
+    "dev": "nodemon src/server.js",
+    "build": "sucrase ./src --copy-files -d ./dist --transforms imports && cp ./src/*.json ./dist/",
+    "start": "node dist/server.js",
+    "test": "NODE_ENV=test jest",
+    "coverage": "NODE_ENV=test jest --watchAll --coverage"
+  },
+  "dependencies": {
+    "dotenv": "^8.0.0",
+    "express": "^4.17.1",
+    "mongoose": "^5.7.1"
+  },
+  "devDependencies": {
+    "@shelf/jest-mongodb": "^1.1.0",
+    "@sucrase/jest-plugin": "^2.0.0",
+    "@types/jest": "^24.0.18",
+    "eslint": "^5.16.0",
+    "eslint-config-airbnb-base": "^13.2.0",
+    "eslint-config-prettier": "^6.0.0",
+    "eslint-plugin-import": "^2.18.2",
+    "eslint-plugin-prettier": "^3.1.0",
+    "jest": "^24.9.0",
+    "nodemon": "^1.19.1",
+    "prettier": "^1.18.2",
+    "sucrase": "^3.10.1"
+  }
+}
