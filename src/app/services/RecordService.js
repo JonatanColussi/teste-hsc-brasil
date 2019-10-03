@@ -55,8 +55,8 @@ class RecordService {
 
     const { value } = record;
 
-    if (Number.isInteger(value)) {
-      const newValue = value + 1;
+    if (!isNaN(value)) {
+      const newValue = parseInt(value) + 1;
       record.value = newValue;
       record.save();
 
