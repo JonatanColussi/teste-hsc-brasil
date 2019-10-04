@@ -17,10 +17,10 @@ class RecordService {
 
     const { type, time } = options;
 
-    if (type === 'EX') {
-      setTimeout(() => {
-        Record.deleteOne({ key });
-      }, time * 1000);
+    if (type && type.toUpperCase() === 'EX') {
+      setTimeout(async () => {
+        await Record.deleteOne({ key });
+      }, time * 10000);
     }
 
     return 'OK';
@@ -53,10 +53,15 @@ class RecordService {
   async incr(key) {
     const record = await Record.findOne({ key });
 
+    if (!record) {
+      await Record.create({ key, value: 0 });
+      return 0;
+    }
+
     const { value } = record;
 
-    if (!isNaN(value)) {
-      const newValue = parseInt(value) + 1;
+    if (!Number.isNaN(value)) {
+      const newValue = parseInt(value, 10) + 1;
       record.value = newValue;
       record.save();
 

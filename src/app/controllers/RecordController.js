@@ -27,8 +27,8 @@ class RecordController {
     const params = query_params.slice(1);
 
     if (func === 'set') {
-      const [key, value] = params;
-      const response = await RecordService.set(key, value, {});
+      const [key, value, type, time] = params;
+      const response = await RecordService.set(key, value, { type, time });
 
       return res.send(response.toString());
     }

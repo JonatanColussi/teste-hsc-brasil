@@ -5,7 +5,7 @@
   "license": "MIT",
   "scripts": {
     "dev": "nodemon src/server.js",
-    "build": "sucrase ./src --copy-files -d ./dist --transforms imports && cp ./src/*.json ./dist/",
+    "build": "sucrase ./src -d ./dist --transforms imports",
     "start": "node dist/server.js",
     "test": "NODE_ENV=test jest",
     "coverage": "NODE_ENV=test jest --watchAll --coverage"

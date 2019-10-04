@@ -4,8 +4,9 @@ class RecordRestController {
   async set(req, res) {
     const { key } = req.params;
     const value = req.body;
+    const options = req.query;
 
-    const response = await RecordService.set(key, value, {});
+    const response = await RecordService.set(key, value, options);
 
     return res.send(response.toString());
   }
