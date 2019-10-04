@@ -15,8 +15,14 @@ describe('Record', () => {
     expect(record).toBe('OK');
   });
 
+  it('Not set record with invalid key', async () => {
+    const record = await recordService.set('mykey#$', 'Hello', {});
+
+    expect(record).toBe(null);
+  });
+
   it('Update record', async () => {
-    const record = await recordService.set('mykey', 'Hello 2', {});
+    const record = await recordService.set('mykey', 'Hello2', {});
 
     expect(record).toBe('OK');
   });
@@ -24,7 +30,7 @@ describe('Record', () => {
   it('Get record', async () => {
     const record = await recordService.get('mykey');
 
-    expect(record).toBe('Hello 2');
+    expect(record).toBe('Hello2');
   });
 
   it('Delete record', async () => {
@@ -36,9 +42,9 @@ describe('Record', () => {
   });
 
   it('count records', async () => {
-    await recordService.set('key 1', 'Hello', {});
-    await recordService.set('key 2', 'Hello', {});
-    await recordService.set('key 3', 'Hello', {});
+    await recordService.set('key1', 'Hello', {});
+    await recordService.set('key2', 'Hello', {});
+    await recordService.set('key3', 'Hello', {});
 
     const count = await recordService.dbsize();
 

@@ -1,5 +1,3 @@
-### [Documentation](https://colussi.herokuapp.com/docs)
-
 # Install
 
 Run `cp .env.example .env`

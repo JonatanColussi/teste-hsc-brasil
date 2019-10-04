@@ -2,6 +2,12 @@ import Record from '../models/Records';
 
 class RecordService {
   async set(key, value, options) {
+    const testRegex = /[^A-Za-z0-9\-_]/;
+
+    if (key.toString().match(testRegex) || value.toString().match(testRegex)) {
+      return null;
+    }
+
     const record = await Record.findOne({ key });
 
     if (record) {

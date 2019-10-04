@@ -21,7 +21,7 @@ class RecordController {
         'zrange',
       ].includes(func)
     ) {
-      return res.send('nil');
+      return res.send(null);
     }
 
     const params = query_params.slice(1);
@@ -38,7 +38,7 @@ class RecordController {
       const response = await RecordService.get(key);
 
       if (!response) {
-        return res.send('nil');
+        return res.send(null);
       }
 
       return res.send(response.toString());
